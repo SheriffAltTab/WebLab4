@@ -45,6 +45,7 @@ if (!$connect) {
             <?php
             $train = mysqli_query($connect, "SELECT * FROM `train` ORDER BY `id` ASC");
             $train = mysqli_fetch_all($train);
+
             foreach ($train as $train){
                 ?>
 
@@ -59,7 +60,7 @@ if (!$connect) {
                     <td><?= $train[7] ?></td>
                     <td><?= $train[8] ?></td>
                     <td><a style="color: white" href="Update/updateTrain.php?id=<?= $train[0] ?>">Редагувати</a></td>
-                    <td style="background: #38303b"><a style="color: red" href="deleteTrain.php?id=<?= $train[0] ?>">Видалити</a></td>
+                    <td style="background: #38303b"><a style="color: red" href="Delete/deleteTrain.php?id=<?= $train[0] ?>">Видалити</a></td>
                 </tr>
                 <?php
             }
@@ -91,6 +92,8 @@ if (!$connect) {
 
     <br>
 
+
+
     <table>
         <tr>
             <th>ID оператора</th>
@@ -101,7 +104,7 @@ if (!$connect) {
         </tr>
         <tr>
             <?php
-            $operator = mysqli_query($connect, "SELECT * FROM `operator`");
+            $operator = mysqli_query($connect, "SELECT * FROM `operator` ORDER BY `operator_id` ASC");
             $operator = mysqli_fetch_all($operator);
             foreach ($operator as $operator){
             ?>
@@ -112,8 +115,9 @@ if (!$connect) {
             <td><?= $operator[2] ?></td>
             <td><?= $operator[3] ?></td>
             <td><?= $operator[4] ?></td>
+            <td><a style="color: white" href="viewOperator.php?operator_id=<?= $operator[0] ?>">Інформація про оператора</a></td>
             <td><a style="color: white" href="Update/updateOperator.php?operator_id=<?= $operator[0] ?>">Редагувати</a></td>
-            <td style="background: #38303b"><a style="color: red" href="deleteOperator.php?operator_id=<?= $operator[0] ?>">Видалити</a></td>
+            <td style="background: #38303b"><a style="color: red" href="Delete/deleteOperator.php?operator_id=<?= $operator[0] ?>">Видалити</a></td>
         </tr>
         <?php
         }
@@ -151,7 +155,7 @@ if (!$connect) {
             <td><?= $station[0]?></td>
             <td><?= $station[1]?></td>
             <td><a style="color: white" href="Update/updateStation.php?station_id=<?= $station[0] ?>">Редагувати</a></td>
-            <td style="background: #38303b"><a style="color: red" href="deleteStation.php?station_id=<?= $station[0] ?>">Видалити</a></td>
+            <td style="background: #38303b"><a style="color: red" href="Delete/deleteStation.php?station_id=<?= $station[0] ?>">Видалити</a></td>
         </tr>
         <?php
         }
@@ -169,6 +173,9 @@ if (!$connect) {
         <button type="submit">Додати</button>
     </form>
 
+    <?php
+
+    ?>
 
 </body>
 </html>
